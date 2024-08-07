@@ -30,7 +30,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  youtube_comment:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+# The `+` indicates that the models in this directory should be built as views.
+  my_new_project:
+    # Applies to all files under models/example/
+    transform:
+      schema: transform
+      materialized: view
+    analysis:
+      schema: analysis
+      materialized: view

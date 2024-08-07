@@ -1,1 +1,5 @@
 # Astro Runtime includes the following pre-installed providers packages: https://docs.astronomer.io/astro/runtime-image-architecture#provider-packages
+gogle-api-python-client==2.136.0
+pandas==2.2.2
+snowflake-connector-python==3.11.0
+pyarrow==16.1.0
