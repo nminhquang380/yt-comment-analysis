@@ -3,7 +3,7 @@
 ## Introduction
 This project is a sentiment analysis on YouTube comments from a specific channel. The channel I aim to analyze is Joma Tech, a Programmer Vlogger that I like. The ultimate result would be a dashboard using **Tableau**.
 
-First, I will load the data by YouTube API to Snowflake as a Data Warehouse. I will have 2 initial tables: Videos and Comments. Then I will pre-process the data and transform it using dbt, in which I will create a table for users who comment and employ Sentiment Analysis Model such as Vader or TextBlob to estimate the sentiment score of each comment. From there, I will use Tableau or Power BI to create a Dashboard and publish it.
+First, I will load the data by YouTube API to BigQuery as a Data Warehouse. I will have 2 initial tables: Videos and Comments. Then I will pre-process the data and transform it using dbt, in which I will create a table for users who comment and employ Sentiment Analysis Model such as Vader or TextBlob to estimate the sentiment score of each comment. From there, I will use Tableau or Power BI to create a Dashboard and publish it.
 
 The project also leverages Airflow to build an automated pipeline.
 
@@ -17,22 +17,30 @@ The project also leverages Airflow to build an automated pipeline.
 3. Generate API credentials (API key).
 
 #### b. Extract Data from YouTube
-1. Use the YouTube Data API to extract relevant data, including video details and comments.
-2. Save the extracted data in JSON format.
+1. Use the YouTube Data API to extract relevant data, including:
+   - Video details and 
+   - Comments details.
+2. Save the extracted data in csv files locally.
 
 ### 2. Data Loading
 
-#### a. Snowflake Setup
-1. Create a Snowflake account and configure the necessary database, schema, and tables.
-2. Define two initial tables: Videos and Comments.
-
-#### b. Load Data into Snowflake
-1. Use Python and the Snowflake connector to load the extracted YouTube data into the Videos and Comments tables in Snowflake.
+#### a. BigQuery Setup
+1. Create a Google account and configure the necessary database, schema, and tables.
+2. Define two initial tables: `raw_videos` and `raw_comments`, and then three tables: `videos`, `comments`, `users`.
+3. Schemas:
+   -  `raw_videos`: ID, TITLE, DESCRIPSTION, PUBLISHED_AT, CATEGORY_ID, DURATION, CAPTION, LIKE_COUNT, COMMENT_COUNT, VIEW_COUNT.
+   -  `raw_comments`: VIDEO_ID, REPLY_COUNT, AUTHOR, TEXT, LIKE_COUNT, PUBLISHED_AT.
+   -  `videos`: ID, TITLE, DESCRIPSTION, PUBLISHED_AT, CATEGORY_ID, DURATION, CAPTION, LIKE_COUNT, COMMENT_COUNT, VIEW_COUNT, AVERAGE_SCORE, MAX_SCORE, MIN_SCORE.
+   - `comments`: VIDEO_ID, REPLY_COUNT, AUTHOR, TEXT, LIKE_COUNT, PUBLISHED_AT, SCORE.
+   - `users`: ID, AUTHOR, COMMENT_COUNT.
+   
+#### b. Load Data into BigQuery
+1. Use Python and the BigQuery connector to load the extracted YouTube data into the Videos and Comments tables in BigQuery.
 
 ### 3. Data Transformation and Processing
 
 #### a. Set up dbt (Data Build Tool)
-1. Create a dbt project and configure the connection to your Snowflake data warehouse.
+1. Create a dbt project and configure the connection to your BigQuery data warehouse.
 2. Define models to preprocess and transform the data.
 
 #### b. Data Transformation
@@ -46,7 +54,7 @@ The project also leverages Airflow to build an automated pipeline.
 ### 4. Data Visualization
 
 #### a. Set up Tableau or Power BI
-1. Connect Tableau or Power BI to your Snowflake data warehouse.
+1. Connect Tableau or Power BI to your BigQuery data warehouse.
 2. Create an interactive dashboard with the following features:
    - **Bar Chart**: Number of comments and videos by month.
    - **Distribution Plot**: Distribution of sentiment scores of comments and average scores of videos.
@@ -68,4 +76,4 @@ The project also leverages Airflow to build an automated pipeline.
 2. Monitor the pipeline to ensure data is updated and processed correctly.
 
 ## Conclusion
-By following this plan, we will be able to analyze sentiments in YouTube comments from Joma Tech's channel, providing valuable insights through an interactive dashboard. This project will demonstrate the integration of various data engineering and analysis tools, including YouTube API, Snowflake, dbt, sentiment analysis models, Tableau, and Airflow.
+By following this plan, we will be able to analyze sentiments in YouTube comments from Joma Tech's channel, providing valuable insights through an interactive dashboard. This project will demonstrate the integration of various data engineering and analysis tools, including YouTube API, BigQuery, dbt, sentiment analysis models, Tableau, and Airflow.
