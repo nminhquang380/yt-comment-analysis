@@ -5,10 +5,12 @@ import pandas as pd
 from dotenv import load_dotenv
 from preprocess_data import clean_text
 
-load_dotenv()
+dotenv_path = "/home/micasidad/Desktop/yt-comment-analysis/.env"
+load_dotenv(dotenv_path)
 
 API_KEY = os.getenv('YOUTUBE_API_KEY')
-CHANNEL_ID = os.getenv('CHANNEL_ID')
+# CHANNEL_ID = os.getenv('CHANNEL_ID')
+CHANNEL_ID = 'UCLrTt8FSINbW6KYUih-gnUA'
 
 def get_youtube_service():
     return googleapiclient.discovery.build('youtube', 'v3', developerKey=API_KEY)
@@ -36,22 +38,26 @@ def get_video_metadata(youtube, video_id):
         id=video_id
     )
     response = request.execute()
-    response = response['items'][0]
-    data = {
-        'ID': response['id'],
-        'TITLE': response['snippet']['title'],
-        'DESCRIPTION': clean_text(response['snippet']['description']),
-        'PUBLISHED_AT': response['snippet']['publishedAt'],
-        'CATEGORY_ID': response['snippet']['categoryId'],
-        'DURATION': response['contentDetails']['duration'],
-        'CAPTION': response['contentDetails']['caption'],
-        'LIKE_COUNT': response['statistics']['likeCount'],
-        'COMMENT_COUNT': response['statistics']['commentCount'],
-        'VIEW_COUNT': response['statistics']['viewCount'],
 
-    }
-    return data
+    try:
+        response = response['items'][0]
+        data = {
+            'ID': response['id'],
+            'TITLE': response['snippet']['title'],
+            'DESCRIPTION': clean_text(response['snippet']['description']),
+            'PUBLISHED_AT': response['snippet']['publishedAt'],
+            'CATEGORY_ID': response['snippet']['categoryId'],
+            'DURATION': response['contentDetails']['duration'],
+            'CAPTION': response['contentDetails']['caption'],
+            'LIKE_COUNT': response['statistics']['likeCount'],
+            'COMMENT_COUNT': response['statistics']['commentCount'],
+            'VIEW_COUNT': response['statistics']['viewCount'],
 
+        }
+        return data
+    except Exception as e:
+        print(f"Error: {e}")
+        
 def get_video_comments(youtube, video_id):
     next_page_token = None
     comments = []
@@ -120,11 +126,11 @@ def main():
 
     # Save metadata to CSV
     videos_df = pd.DataFrame(all_videos_data)
-    videos_df.to_csv('data/unpreprocessed/videos_metadata.csv', index=False)
+    videos_df.to_csv('data/unpreprocessed/videos.csv', index=False)
 
     # Save comments to CSV
     comments_df = pd.DataFrame(all_comments_data)
-    comments_df.to_csv('data/unpreprocessed/comments_metadata.csv', index=False)
+    comments_df.to_csv('data/unpreprocessed/comments.csv', index=False)
 
 if __name__ == '__main__':
     main()

@@ -11,12 +11,25 @@ dataset_id = 'youtube_sentiment'
 json_key_path = 'sentiment-analysis.privateKey.json'
 
 # Csv file path
-videos_file = 'data/unpreprocessed/videos_metadata.csv'
-comments_file = 'data/unpreprocessed/comments_metadata.csv'
+videos_file = 'data/preprocessed/videos.csv'
+comments_file = 'data/preprocessed/comments.csv'
+
+# Path to SQL file
+sql_file = '../create_tables.sql'
 
 # Initialize a BigQuery client
 credentials = service_account.Credentials.from_service_account_file(json_key_path)
 client = bigquery.Client(project=project_id, credentials=credentials)
+
+def execute_sql_file(sql_file_path):
+    """Execute the SQL commands in the provided file."""
+    with open(sql_file_path, 'r') as file:
+        sql_script = file.read()
+    
+    # Execute the SQL script
+    job = client.query(sql_script)
+    job.result()  # Wait for the job to complete
+    print("SQL script executed successfully.")
 
 def upload_csv_to_bq(csv_file_path, table_id):
     # Table references
@@ -38,5 +51,6 @@ def upload_csv_to_bq(csv_file_path, table_id):
     print(f"Successfully upload {csv_file_path} to {table_id} in BigQuery")
 
 if __name__ == "__main__":
-    # upload_csv_to_bq(videos_file, 'raw_videos')
-    upload_csv_to_bq(comments_file, 'raw_comments')
+    execute_sql_file(sql_file)
+    upload_csv_to_bq(videos_file, 'videos')
+    upload_csv_to_bq(comments_file, 'comments')

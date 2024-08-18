@@ -1,27 +1,3 @@
--- Create the raw_videos table
-CREATE OR REPLACE TABLE youtube_sentiment.raw_videos (
-    ID STRING,
-    TITLE STRING,
-    DESCRIPTION STRING,
-    PUBLISHED_AT STRING,
-    CATEGORY_ID STRING,
-    DURATION STRING,
-    CAPTION STRING,
-    LIKE_COUNT INT64,
-    COMMENT_COUNT INT64,
-    VIEW_COUNT INT64
-);
-
--- Create the raw_comments table
-CREATE OR REPLACE TABLE youtube_sentiment.raw_comments (
-    REPLY_COUNT INT64,
-    AUTHOR STRING,
-    TEXT STRING,
-    LIKE_COUNT INT64,
-    PUBLISHED_AT STRING,
-    VIDEO_ID STRING,
-);
-
 -- Create the videos table
 CREATE OR REPLACE TABLE youtube_sentiment.videos (
     ID STRING,
@@ -33,23 +9,18 @@ CREATE OR REPLACE TABLE youtube_sentiment.videos (
     CAPTION BOOLEAN,
     LIKE_COUNT INT64,
     COMMENT_COUNT INT64,
-    VIEW_COUNT INT64,
-    AVERAGE_SCORE FLOAT64,
-    MAX_SCORE FLOAT64,
-    MIN_SCORE FLOAT64
+    VIEW_COUNT INT64
 );
 
 -- Create the comments table
 CREATE OR REPLACE TABLE youtube_sentiment.comments (
-    ID SERIAL,
     VIDEO_ID STRING,
     REPLY_COUNT INT64,
     AUTHOR STRING,
     TEXT STRING,
     LIKE_COUNT INT64,
     PUBLISHED_AT TIMESTAMP,
-    SCORE FLOAT64,
-    FOREIGN KEY (VIDEO_ID) REFERENCES videos(ID)
+    SCORE FLOAT64
 );
 
 -- Create the users table
