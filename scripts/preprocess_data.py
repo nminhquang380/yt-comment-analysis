@@ -3,6 +3,9 @@ from html import unescape
 import string
 from textblob import TextBlob
 import pandas as pd
+from deep_translator import ChatGptTranslator, GoogleTranslator
+import os
+from dotenv import load_dotenv
 
 '''
 TODO:
@@ -13,6 +16,9 @@ TODO:
 - Calculate AVERAGE_SCORE, MAX_SCORE, MIN_SCORE of videos
 - Create users table
 '''
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 def clean_text(text):
     # Remove HTML tags
@@ -50,7 +56,12 @@ def iso8601_to_minutes(duration: str) -> int:
     return int(total_minutes)
 
 def get_sentiment_score(text):
-    # Create a TextBlob object
+    # # Translating text if not English
+    # translated_text = GoogleTranslator(source='auto', target='en').translate(text=text)
+
+    # # Create a TextBlob object
+    # blob = TextBlob(translated_text)
+
     blob = TextBlob(text)
 
     # Return the sentiment score
@@ -61,13 +72,17 @@ def main():
     comments_df = pd.read_csv('/home/micasidad/Desktop/yt-comment-analysis/data/unpreprocessed/comments.csv')
     videos_df = pd.read_csv('/home/micasidad/Desktop/yt-comment-analysis/data/unpreprocessed/videos.csv')
 
+    # Comments Dataset
+    comments_df.dropna(inplace=True)
     comments_df['TEXT'] = comments_df['TEXT'].apply(clean_text)
     comments_df['SCORE'] = comments_df['TEXT'].apply(get_sentiment_score)
 
+    # Videos Dataset
     videos_df['DURATION'] = videos_df['DURATION'].apply(iso8601_to_minutes)
 
-    comments_df.to_csv('/home/micasidad/Desktop/yt-comment-analysis/data/preprocessed/comments.csv')
-    videos_df.to_csv('/home/micasidad/Desktop/yt-comment-analysis/data/preprocessed/videos.csv')
+    # Save data
+    comments_df.to_csv('/home/micasidad/Desktop/yt-comment-analysis/data/preprocessed/comments.csv', index=False)
+    videos_df.to_csv('/home/micasidad/Desktop/yt-comment-analysis/data/preprocessed/videos.csv', index=False)
 
 if __name__ == "__main__":
     main()

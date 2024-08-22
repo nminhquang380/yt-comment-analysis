@@ -33,6 +33,6 @@ models:
   yt_comment_analysis:
     # Config indicated by + and applies to all files under models/example/
     video_scores:
-      materialized: 'view'
+      materialized: table
     users:
       materialized: table

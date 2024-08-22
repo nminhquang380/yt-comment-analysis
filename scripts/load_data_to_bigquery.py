@@ -15,7 +15,7 @@ videos_file = 'data/preprocessed/videos.csv'
 comments_file = 'data/preprocessed/comments.csv'
 
 # Path to SQL file
-sql_file = '../create_tables.sql'
+sql_file = '/home/micasidad/Desktop/yt-comment-analysis/create_tables.sql'
 
 # Initialize a BigQuery client
 credentials = service_account.Credentials.from_service_account_file(json_key_path)

@@ -1,3 +1,10 @@
-./scripts/extract_youtube_data.py
-./scripts/preprocess_data.py
-./scripts/load_data_to_bigquery.py
+#!/bin/bash
+
+# Run Python scripts
+python scripts/extract_youtube_data.py
+python scripts/preprocess_data.py
+python scripts/load_data_to_bigquery.py
+
+# Change directory to dbt and run dbt commands
+cd dbt
+dbt run
