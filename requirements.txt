@@ -8,5 +8,3 @@ matplotlib
 seaborn
 deep-translator
 astronomer-cosmos[dbt-bigquery]
-protobuf
-apache-airflow-providers-google

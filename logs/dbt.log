@@ -81,3 +81,33 @@ Runtime Error
 [0m14:22:54.456786 [debug] [MainThread]: Command `dbt debug` failed at 14:22:54.456704 after 0.83 seconds
 [0m14:22:54.457185 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x728ab97e1050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x728abd11a1d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x728a95b58510>]}
 [0m14:22:54.457572 [debug] [MainThread]: Flushing usage events
+[0m07:09:46.254111 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000165972B8AF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016599BA2740>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016599BA2FB0>]}
+
+
+============================== 07:09:46.269735 | 596a9509-8315-4e45-b1c9-06e4360a3e50 ==============================
+[0m07:09:46.269735 [info ] [MainThread]: Running with dbt=1.8.5
+[0m07:09:46.269735 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\T590\\.dbt', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt init', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m07:09:46.490472 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/T590/.dbt')}
+[0m07:09:46.490472 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m07:09:55.649641 [debug] [MainThread]: Starter project path: C:\Users\T590\Desktop\yt-comment-analysis\venv\lib\site-packages\dbt\include\starter_project
+[0m07:09:55.743670 [info ] [MainThread]: 
+Your new dbt project "youtube_sentiment" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m07:09:55.743982 [info ] [MainThread]: Setting up your profile.
+[0m07:11:33.160785 [info ] [MainThread]: Profile youtube_sentiment written to C:\Users\T590\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m07:11:33.163534 [debug] [MainThread]: Command `dbt init` succeeded at 07:11:33.162998 after 107.05 seconds
+[0m07:11:33.164066 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000165972B8AF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000165AA538A00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016599BA22C0>]}
+[0m07:11:33.165142 [debug] [MainThread]: Flushing usage events
