@@ -535,3 +535,138 @@ ON
 [0m14:46:05.425298 [debug] [MainThread]: Command `dbt run` succeeded at 14:46:05.425298 after 12.37 seconds
 [0m14:46:05.426806 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002292CFC8B50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022941439E40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002292D6985E0>]}
 [0m14:46:05.426806 [debug] [MainThread]: Flushing usage events
+[0m14:53:01.386655 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000234829B4B20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000234852A3EB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000234852A2F80>]}
+
+
+============================== 14:53:01.389163 | 0bb45cc1-13d5-4d89-b743-02971c190944 ==============================
+[0m14:53:01.389163 [info ] [MainThread]: Running with dbt=1.8.5
+[0m14:53:01.389163 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': 'C:\\Users\\T590\\.dbt', 'log_path': 'C:\\Users\\T590\\Desktop\\yt-comment-analysis\\dbt\\logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m14:53:02.469771 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0bb45cc1-13d5-4d89-b743-02971c190944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023495CE79A0>]}
+[0m14:53:02.595333 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0bb45cc1-13d5-4d89-b743-02971c190944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000234844E83D0>]}
+[0m14:53:02.595333 [info ] [MainThread]: Registered adapter: bigquery=1.8.2
+[0m14:53:02.618851 [debug] [MainThread]: checksum: 643640a45b16e0d012867be4ac17daaa0c3ce97300faec3ce9a6de300b5e1c09, vars: {}, profile: , target: , version: 1.8.5
+[0m14:53:02.795637 [debug] [MainThread]: Partial parsing enabled: 1 files deleted, 0 files added, 0 files changed.
+[0m14:53:02.864146 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0bb45cc1-13d5-4d89-b743-02971c190944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023496E11990>]}
+[0m14:53:02.953544 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0bb45cc1-13d5-4d89-b743-02971c190944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023496E10070>]}
+[0m14:53:02.953544 [info ] [MainThread]: Found 2 models, 473 macros
+[0m14:53:02.963843 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0bb45cc1-13d5-4d89-b743-02971c190944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023496E10C10>]}
+[0m14:53:02.963843 [info ] [MainThread]: 
+[0m14:53:02.963843 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m14:53:02.971162 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_sentiment-analysis-410608'
+[0m14:53:02.973240 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:53:04.017077 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_sentiment-analysis-410608_youtube_sentiment'
+[0m14:53:04.017077 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:53:04.677427 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0bb45cc1-13d5-4d89-b743-02971c190944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000234852EC820>]}
+[0m14:53:04.677427 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m14:53:04.677427 [info ] [MainThread]: 
+[0m14:53:04.691893 [debug] [Thread-1 (]: Began running node model.youtube_sentiment.users
+[0m14:53:04.691893 [info ] [Thread-1 (]: 1 of 2 START sql table model youtube_sentiment.users ........................... [RUN]
+[0m14:53:04.699949 [debug] [Thread-1 (]: Acquiring new bigquery connection 'model.youtube_sentiment.users'
+[0m14:53:04.703474 [debug] [Thread-1 (]: Began compiling node model.youtube_sentiment.users
+[0m14:53:04.712639 [debug] [Thread-1 (]: Writing injected SQL for node "model.youtube_sentiment.users"
+[0m14:53:04.723204 [debug] [Thread-1 (]: Began executing node model.youtube_sentiment.users
+[0m14:53:04.746322 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m14:53:05.497453 [debug] [Thread-1 (]: Writing runtime sql for node "model.youtube_sentiment.users"
+[0m14:53:05.497453 [debug] [Thread-1 (]: On model.youtube_sentiment.users: /* {"app": "dbt", "dbt_version": "1.8.5", "profile_name": "youtube_sentiment", "target_name": "dev", "node_id": "model.youtube_sentiment.users"} */
+
+  
+    
+
+    create or replace table `sentiment-analysis-410608`.`youtube_sentiment`.`users`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      -- models/users.sql
+
+WITH user_data AS (
+    SELECT
+        AUTHOR,
+        COUNT(*) AS COMMENT_COUNT
+    FROM
+        youtube_sentiment.comments  -- Referencing the raw_comments table
+    GROUP BY
+        AUTHOR
+)
+
+SELECT * FROM user_data
+    );
+  
+[0m14:53:07.178521 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=sentiment-analysis-410608&j=bq:australia-southeast1:4afa7dd2-d529-495f-9d17-00c1f8bcdb93&page=queryresults
+[0m14:53:09.201050 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '0bb45cc1-13d5-4d89-b743-02971c190944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023496DA0940>]}
+[0m14:53:09.201050 [info ] [Thread-1 (]: 1 of 2 OK created sql table model youtube_sentiment.users ...................... [[32mCREATE TABLE (4.4k rows, 143.3 KiB processed)[0m in 4.51s]
+[0m14:53:09.207940 [debug] [Thread-1 (]: Finished running node model.youtube_sentiment.users
+[0m14:53:09.209324 [debug] [Thread-1 (]: Began running node model.youtube_sentiment.video_scores
+[0m14:53:09.210476 [info ] [Thread-1 (]: 2 of 2 START sql table model youtube_sentiment.video_scores .................... [RUN]
+[0m14:53:09.210476 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.youtube_sentiment.users, now model.youtube_sentiment.video_scores)
+[0m14:53:09.210476 [debug] [Thread-1 (]: Began compiling node model.youtube_sentiment.video_scores
+[0m14:53:09.210476 [debug] [Thread-1 (]: Writing injected SQL for node "model.youtube_sentiment.video_scores"
+[0m14:53:09.210476 [debug] [Thread-1 (]: Began executing node model.youtube_sentiment.video_scores
+[0m14:53:09.217942 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:53:09.798352 [debug] [Thread-1 (]: Writing runtime sql for node "model.youtube_sentiment.video_scores"
+[0m14:53:09.798352 [debug] [Thread-1 (]: On model.youtube_sentiment.video_scores: /* {"app": "dbt", "dbt_version": "1.8.5", "profile_name": "youtube_sentiment", "target_name": "dev", "node_id": "model.youtube_sentiment.video_scores"} */
+
+  
+    
+
+    create or replace table `sentiment-analysis-410608`.`youtube_sentiment`.`video_scores`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      WITH comment_scores AS (
+    SELECT
+        VIDEO_ID,
+        AVG(SCORE) AS AVERAGE_SCORE,
+        MAX(SCORE) AS MAX_SCORE,
+        MIN(SCORE) AS MIN_SCORE
+    FROM
+        youtube_sentiment.comments -- This refers to the comments table in dbt
+    GROUP BY
+        VIDEO_ID
+)
+
+SELECT
+    v.ID,
+    v.TITLE,
+    v.DESCRIPTION,
+    v.PUBLISHED_AT,
+    v.CATEGORY_ID,
+    v.DURATION,
+    v.CAPTION,
+    v.LIKE_COUNT,
+    v.COMMENT_COUNT,
+    v.VIEW_COUNT,
+    cs.AVERAGE_SCORE,
+    cs.MAX_SCORE,
+    cs.MIN_SCORE
+FROM
+    youtube_sentiment.videos v -- This refers to the videos table in dbt
+LEFT JOIN
+    comment_scores cs
+ON
+    v.ID = cs.VIDEO_ID
+    );
+  
+[0m14:53:11.387812 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=sentiment-analysis-410608&j=bq:australia-southeast1:f1895813-694b-4070-9b89-276a50e81852&page=queryresults
+[0m14:53:13.252573 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '0bb45cc1-13d5-4d89-b743-02971c190944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023496DA30D0>]}
+[0m14:53:13.252573 [info ] [Thread-1 (]: 2 of 2 OK created sql table model youtube_sentiment.video_scores ............... [[32mCREATE TABLE (62.0 rows, 249.9 KiB processed)[0m in 4.04s]
+[0m14:53:13.263791 [debug] [Thread-1 (]: Finished running node model.youtube_sentiment.video_scores
+[0m14:53:13.272324 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:53:13.274641 [debug] [MainThread]: Connection 'list_sentiment-analysis-410608' was properly closed.
+[0m14:53:13.276852 [debug] [MainThread]: Connection 'list_sentiment-analysis-410608_youtube_sentiment' was properly closed.
+[0m14:53:13.281834 [debug] [MainThread]: Connection 'model.youtube_sentiment.video_scores' was properly closed.
+[0m14:53:13.285033 [info ] [MainThread]: 
+[0m14:53:13.290223 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 10.32 seconds (10.32s).
+[0m14:53:13.293306 [debug] [MainThread]: Command end result
+[0m14:53:13.351145 [info ] [MainThread]: 
+[0m14:53:13.353895 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:53:13.353895 [info ] [MainThread]: 
+[0m14:53:13.353895 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+[0m14:53:13.353895 [debug] [MainThread]: Command `dbt run` succeeded at 14:53:13.353895 after 12.07 seconds
+[0m14:53:13.353895 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000234829B4B20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000234845177F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023496DBF250>]}
+[0m14:53:13.353895 [debug] [MainThread]: Flushing usage events

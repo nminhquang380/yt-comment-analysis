@@ -12,3 +12,5 @@ airflow.db
 venv/
 *.privateKey.json
 data/
+venv
+profiles.yml

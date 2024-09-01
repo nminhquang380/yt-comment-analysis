@@ -50,7 +50,10 @@ def upload_csv_to_bq(csv_file_path, table_id):
 
     print(f"Successfully upload {csv_file_path} to {table_id} in BigQuery")
 
-if __name__ == "__main__":
+def main():
     execute_sql_file(sql_file)
     upload_csv_to_bq(videos_file, 'videos')
     upload_csv_to_bq(comments_file, 'comments')
+
+if __name__ == "__main__":
+    main()
