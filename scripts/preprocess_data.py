@@ -3,7 +3,6 @@ from html import unescape
 import string
 from textblob import TextBlob
 import pandas as pd
-from deep_translator import ChatGptTranslator, GoogleTranslator
 import os
 from dotenv import load_dotenv
 
@@ -16,10 +15,6 @@ TODO:
 - Calculate AVERAGE_SCORE, MAX_SCORE, MIN_SCORE of videos
 - Create users table
 '''
-load_dotenv()
-
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-
 def clean_text(text):
     # Remove HTML tags
     text = re.sub(r'<.*?>', '', text)
@@ -69,8 +64,8 @@ def get_sentiment_score(text):
 
 def main():
     # Load data
-    comments_df = pd.read_csv('/home/micasidad/Desktop/yt-comment-analysis/data/unpreprocessed/comments.csv')
-    videos_df = pd.read_csv('/home/micasidad/Desktop/yt-comment-analysis/data/unpreprocessed/videos.csv')
+    comments_df = pd.read_csv('/home/airflow/gcs/data/unpreprocessed/comments.csv')
+    videos_df = pd.read_csv('/home/airflow/gcs/data/unpreprocessed/videos.csv')
 
     # Comments Dataset
     comments_df.dropna(inplace=True)
@@ -81,8 +76,8 @@ def main():
     videos_df['DURATION'] = videos_df['DURATION'].apply(iso8601_to_minutes)
 
     # Save data
-    comments_df.to_csv('/home/micasidad/Desktop/yt-comment-analysis/data/preprocessed/comments.csv', index=False)
-    videos_df.to_csv('/home/micasidad/Desktop/yt-comment-analysis/data/preprocessed/videos.csv', index=False)
+    comments_df.to_csv('/home/airflow/gcs/data/preprocessed/comments.csv', index=False)
+    videos_df.to_csv('/home/airflow/gcs/data/preprocessed/videos.csv', index=False)
 
 if __name__ == "__main__":
     main()

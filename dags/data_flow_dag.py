@@ -10,8 +10,8 @@ from scripts.load_data_to_bigquery import main as put_data_to_bigquery_main
 # Define your DAG
 with DAG(
     dag_id='python_scripts_dag',
-    start_date=pendulum.today(),
-    schedule_interval='@daily',  # Adjust this as per your requirements
+    start_date=pendulum.datetime(2024, 8, 31),  # Set the specific start date to 31st August 2024
+    schedule_interval='@weekly',  # Adjust this as per your requirements
     catchup=False,
 ) as dag:
 

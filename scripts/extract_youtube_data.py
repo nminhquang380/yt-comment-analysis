@@ -3,14 +3,14 @@ import googleapiclient.discovery
 import googleapiclient.errors
 import pandas as pd
 from dotenv import load_dotenv
-from preprocess_data import clean_text
+from scripts.preprocess_data import clean_text
 
-dotenv_path = "/home/micasidad/Desktop/yt-comment-analysis/.env"
-load_dotenv(dotenv_path)
+# dotenv_path = "/home/micasidad/Desktop/yt-comment-analysis/.env"
+# load_dotenv(dotenv_path)
 
 API_KEY = os.getenv('YOUTUBE_API_KEY')
-# CHANNEL_ID = os.getenv('CHANNEL_ID')
-CHANNEL_ID = 'UCc6RN6wpBR3AF0rBwsB5G7g' # Max Yoko
+CHANNEL_ID = os.getenv('CHANNEL_ID')
+# CHANNEL_ID = 'UCc6RN6wpBR3AF0rBwsB5G7g' # Max Yoko
 
 def get_youtube_service():
     return googleapiclient.discovery.build('youtube', 'v3', developerKey=API_KEY)
@@ -132,11 +132,11 @@ def main():
 
     # Save metadata to CSV
     videos_df = pd.DataFrame(all_videos_data)
-    videos_df.to_csv('data/unpreprocessed/videos.csv', index=False)
+    videos_df.to_csv('/home/airflow/gcs/data/unpreprocessed/videos.csv', index=False)
 
     # Save comments to CSV
     comments_df = pd.DataFrame(all_comments_data)
-    comments_df.to_csv('data/unpreprocessed/comments.csv', index=False)
+    comments_df.to_csv('/home/airflow/gcs/data/unpreprocessed/comments.csv', index=False)
 
 if __name__ == '__main__':
     main()

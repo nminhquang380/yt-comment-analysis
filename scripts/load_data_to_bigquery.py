@@ -8,14 +8,14 @@ project_id = 'sentiment-analysis-410608'
 dataset_id = 'youtube_sentiment'
 
 # Path to your JSON key file
-json_key_path = 'sentiment-analysis.privateKey.json'
+json_key_path = '/home/airflow/gcs/data/target/secrets/yt-sentiment.privateKey.json'
 
 # Csv file path
-videos_file = 'data/preprocessed/videos.csv'
-comments_file = 'data/preprocessed/comments.csv'
+videos_file = '/home/airflow/gcs/data/preprocessed/videos.csv'
+comments_file = '/home/airflow/gcs/data/preprocessed/comments.csv'
 
 # Path to SQL file
-sql_file = '/home/micasidad/Desktop/yt-comment-analysis/create_tables.sql'
+sql_file = '/home/airflow/gcs/dags/scripts/create_tables.sql'
 
 # Initialize a BigQuery client
 credentials = service_account.Credentials.from_service_account_file(json_key_path)
