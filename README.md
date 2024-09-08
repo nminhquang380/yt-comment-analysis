@@ -11,6 +11,7 @@ The pipeline integrates several tools:
 - [**Looker Studio**](https://lookerstudio.google.com/) for visualization.
 - [**GCP Composer**](https://cloud.google.com/composer/docs/concepts/overview) to automate the workflow.
 
+Here is the [Final Dashboard](https://github.com/nminhquang380/yt-comment-analysis) in **Looker Studio**.
 ## **Project Plan**
 
 ### **1. Data Extraction**
